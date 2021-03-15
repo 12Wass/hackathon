@@ -1,4 +1,9 @@
 # Hackathon
 
 Repo de l'équipe 23
-Symfony 4 - JS Natif - Bootstrap/Webpack
+
+## Stack Technique : 
+PHP 7.4
+MySQL
+Symfony 4.4 
+Javascript
