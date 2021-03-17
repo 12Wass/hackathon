@@ -3,7 +3,7 @@
 <nav id="sidebar" aria-label="Main Navigation">
     <div class="bg-header-dark">
         <div class="content-header bg-white-10">
-            <a class="font-w600 text-white tracking-wide" href="{{ path('') }}">
+            <a class="font-w600 text-white tracking-wide" href="{{ path('admin_dashboard') }}">
                 <span class="smini-visible">
                     D<span class="opacity-75">A</span>
                 </span>
@@ -18,33 +18,26 @@
         <div class="content-side">
             <ul class="nav-main">
                 <li class="nav-main-item">
-                    <a class="nav-main-link {% if route_name == 'route_name' %}active{% endif %}" href="{{ path('route_name') }}">
+                    <a class="nav-main-link {% if route_name == 'admin_dashboard' %}active{% endif %}" href="{{ path('admin_dashboard') }}">
                         <i class="nav-main-link-icon fa fa-location-arrow"></i>
                         <span class="nav-main-link-name">Dashboard</span>
                     </a>
                 </li>
 
-                <li class="nav-main-item">
-                    <a class="nav-main-link {% if route_name == 'route_name' %}active{% endif %}" href="{{ path('route_name') }}">
+                <li class="nav-main-item {% if (route_name == 'user_list') or (route_name == 'user_new') or (route_name == 'user_edit') %}open{% endif %}">
+                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
                         <i class="nav-main-link-icon fa fa-users"></i>
                         <span class="nav-main-link-name">Utilisateurs</span>
                     </a>
-                </li>
-                <li class="nav-main-item {% if (route_name == 'route_name') or (route_name == 'route_name') %}open{% endif %}">
-                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
-                        <i class="nav-main-link-icon fa fa-boxes"></i>
-                        <span class="nav-main-link-name">Lorem</span>
-                    </a>
                     <ul class="nav-main-submenu">
                         <li class="nav-main-item">
-                            <a class="nav-main-link {% if route_name == 'route_name' %}active{% endif %}" href="{{ path('route_name') }}">
-                                <span class="nav-main-link-name">Lorem</span>
+                            <a class="nav-main-link {% if route_name == 'user_list' %}active{% endif %}" href="{{ path('user_list') }}">
+                                <span class="nav-main-link-name">Liste</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link {% if route_name == 'route_name' %}active{% endif %}"
-                               href="{{ path('route_name') }}">
-                                <span class="nav-main-link-name">Lorem</span>
+                            <a class="nav-main-link {% if route_name == 'route_name' %}active{% endif %}" href="{{ path('user_new') }}">
+                                <span class="nav-main-link-name">Ajouter</span>
                             </a>
                         </li>
                     </ul>
