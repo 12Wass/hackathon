@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+class DefaultController extends AbstractController
+{
+    /**
+     * @Route("/default", name="default")
+     */
+    public function index(): Response
+    {
+        return $this->render('default/index.html.twig', [
+            'controller_name' => 'DefaultController',
+        ]);
+    }
+
+    /**
+     * @Route("/dashboard", name="dashboard")
+     */
+    public function dashboard(): Response
+    {
+        return $this->render('admin/dashboard/index.html.twig', [
+            'controller_name' => 'DefaultController',
+        ]);
+    }
+}
