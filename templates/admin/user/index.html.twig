@@ -1,0 +1,69 @@
+{% extends 'views/admin/layout.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('admin/js/plugins/datatables/dataTables.bootstrap4.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/js/plugins/datatables/buttons-bs4/buttons.bootstrap4.min.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="block block-rounded">
+        <div class="block-header block-header-default">
+            <h3 class="block-title">Liste des utilisateurs</h3>
+        </div>
+        <div class="block-content block-content-full">
+            <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
+                <thead>
+                <tr>
+                    <th>Nom d'utilisateur</th>
+                    <th>Grade</th>
+                    <th>Actif</th>
+                    <th>Créer le</th>
+                    <th>Mis à jour le</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr id="user{{ user.id }}">
+                        <td>{{ user.username }}</td>
+                        <td>
+                            {% for roles in user.roles %}
+                                {% if roles == "ROLE_ADMIN" %}
+                                    <span class="badge badge-warning">Admin</span>
+                                {% endif %}
+                                {% if roles == "ROLE_SUPER_ADMIN" %}
+                                    <span class="badge badge-danger">Super Admin</span>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>{{ user.active ? '<span class="badge badge-success">Oui</span>' : '<span class="badge badge-danger">Non</span>' }}</td>
+                        <td>{{ user.createdAt|date('Y-m-d H:i:s') }}</td>
+                        <td>{{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : 'Jamais' }}</td>
+                        <td>
+                            <a data-toggle="tooltip" data-placement="top" title="Voir" class="btn btn-small btn-primary" href="{{ path('user_show', {'id': user.id}) }}"><i class="fa fa-eye"></i></a>
+                            <a data-toggle="tooltip" data-placement="top" title="Editer" class="btn btn-small btn-warning" href="{{ path('user_edit', {'id': user.id}) }}"><i class="fa fa-pen"></i></a>
+                            <a data-toggle="tooltip" data-placement="top" title="Supprimer" class="btn btn-small btn-danger" href="{{ path('user_delete', {'id': user.id}) }}"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+
+<script src="{{ asset('admin/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('admin/js/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('admin/js/plugins/datatables/buttons/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('admin/js/plugins/datatables/buttons/buttons.print.min.js') }}"></script>
+<script src="{{ asset('admin/js/plugins/datatables/buttons/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('admin/js/plugins/datatables/buttons/buttons.flash.min.js') }}"></script>
+<script src="{{ asset('admin/js/plugins/datatables/buttons/buttons.colVis.min.js') }}"></script>
+<script src="{{ asset('admin/js/pages/datatables.js') }}"></script>
+
+{% endblock %}
