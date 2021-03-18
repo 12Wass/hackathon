@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 87 87" style="enable-background:new 0 0 87 87;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+	.st1{clip-path:url(#SVGID_2_);}
+	.st2{fill:#E10814;}
+</style>
+<g id="Catégories" transform="translate(12 9)">
+	<g transform="matrix(1, 0, 0, 1, -12, -9)">
+		<path id="Rectangle_13-2" class="st0" d="M30,0h27c16.6,0,30,13.4,30,30v27c0,16.6-13.4,30-30,30H30C13.4,87,0,73.6,0,57V30
+			C0,13.4,13.4,0,30,0z"/>
+	</g>
+</g>
+<g id="Groupe_7" transform="translate(28.864 26.895)">
+	<g>
+		<defs>
+			<rect id="SVGID_1_" x="-12" y="-9" width="51.2" height="51.2"/>
+		</defs>
+		<clipPath id="SVGID_2_">
+			<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+		</clipPath>
+		<g id="Groupe_6" class="st1">
+			<path id="Tracé_10" class="st2" d="M28.8,26.4c0.3-0.5,0.2-1.1-0.3-1.4c-0.3-0.2-0.8-0.2-1.1,0l-2.5-2.5
+				c4.5-6.7,4.6-15.4,0.3-22.2c-0.3-0.5-0.9-0.6-1.4-0.3c-0.5,0.3-0.6,0.9-0.3,1.4l0,0c5.4,8.5,3,19.7-5.5,25.1s-19.7,3-25.1-5.5
+				s-3-19.7,5.5-25.1C4.3-7.9,11.8-8,17.8-4.3c0.5,0.3,1.1,0.1,1.4-0.3c0.3-0.5,0.1-1.1-0.3-1.4l0,0C9.4-11.8-3.1-8.9-9,0.5
+				s-3,21.9,6.5,27.8c6.7,4.2,15.3,4,21.9-0.4l2.5,2.5c-0.4,0.4-0.3,1,0.1,1.4c0.4,0.3,1,0.3,1.3,0l9.3,9.3c0.7,0.7,1.7,1.1,2.7,1.1
+				c2.1,0,3.9-1.7,3.9-3.9c0-1-0.4-2-1.1-2.7L28.8,26.4z M21.5,27.2l2.6-2.6l1.8,1.8L23.3,29L21.5,27.2z M36.6,39.7
+				c-0.7,0.7-1.9,0.7-2.6,0l-9.3-9.3l2.6-2.6l9.3,9.3C37.4,37.8,37.4,38.9,36.6,39.7"/>
+			<path id="Tracé_11" class="st2" d="M8.2-4.2c-8.5,0-15.4,6.9-15.4,15.4s6.9,15.4,15.4,15.4s15.4-6.9,15.4-15.4l0,0
+				C23.6,2.7,16.7-4.2,8.2-4.2 M8.2,24.6c-7.4,0-13.4-6-13.4-13.4c0-7.4,6-13.4,13.4-13.4c7.4,0,13.4,6,13.4,13.4
+				C21.6,18.6,15.6,24.6,8.2,24.6"/>
+		</g>
+	</g>
+</g>
+</svg>
