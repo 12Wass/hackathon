@@ -44,9 +44,7 @@
 
         .dd-handle {
             display: block;
-            height: 30px;
-            margin: 5px 0;
-            padding: 5px 10px;
+            height: auto;
             color: #333;
             text-decoration: none;
             font-weight: bold;
@@ -62,8 +60,6 @@
             cursor: move;
             margin: 0 0 10px;
             background: #dbdbdb;
-            /*    color: #6f6f6f;*/
-            padding: 5px 12px
         }
 
         .dd-handle:hover {
@@ -76,9 +72,8 @@
             cursor: pointer;
             float: left;
             width: 25px;
-            height: 30px;
-            margin: 0px 0px;
-            margin-right: 10px;
+            height: 32px;
+            margin: 0px 10px 0px 0px;
             padding: 0;
             text-indent: 100%;
             white-space: nowrap;
@@ -302,33 +297,6 @@
 {% block body %}
     <div class="content">
         <div class="row">
-            <div class="col-md-4">
-                <div class="block block-rounded">
-                    <div class="block-header block-header-default">
-                        <h3 class="block-title">Ajouter une nouvelle réponse</h3>
-                    </div>
-                    <form class="form" id="menu-add">
-                        <div class="block-content">
-                            <div class="form-group">
-                                <label for="addText">Texte</label>
-                                <textarea class="form-control" id="addText" placeholder="Texte de votre choix"
-                                          required></textarea>
-                            </div>
-                        </div>
-                        <div class="block-content block-content-sm block-content-full bg-body-light rounded-bottom">
-                            <div class="row">
-                                <div class="col-12 text-right">
-                                    <button class="btn btn-success" id="addButton">
-                                        Ajouter la réponse <i class="fa fa-angle-right ml-1"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-
             <div class="col-md-8">
                 <div class="block block-rounded">
                     <div class="block-header block-header-default">
@@ -355,28 +323,54 @@
                 </div>
 
             </div>
-
-            <div class="col-md-4" id="menu-editor" style="display: none;">
-                <div class="block block-rounded">
-                    <div class="block-header block-header-default">
-                        <h3 class="block-title">Edition d'une réponse en cours</h3>
-                    </div>
-                    <div class="block-content">
-                        <form class="">
-                            <div class="form-group">
-                                <label for="editInputText">Texte</label>
-                                <textarea type="text" class="form-control" id="editInputText"
-                                          placeholder="Texte de votre choix"
-                                          required></textarea>
+            <div class="col-md-4">
+                <div class="col-md-12">
+                    <div class="block block-rounded">
+                        <div class="block-header block-header-default">
+                            <h3 class="block-title">Ajouter une nouvelle réponse</h3>
+                        </div>
+                        <form class="form" id="menu-add">
+                            <div class="block-content">
+                                <div class="form-group">
+                                    <label for="addText">Texte</label>
+                                    <textarea class="form-control" id="addText" placeholder="Texte de votre choix"
+                                              required></textarea>
+                                </div>
+                            </div>
+                            <div class="block-content block-content-sm block-content-full bg-body-light rounded-bottom">
+                                <div class="row">
+                                    <div class="col-12 text-right">
+                                        <button class="btn btn-success" id="addButton">
+                                            Ajouter la réponse <i class="fa fa-angle-right ml-1"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
-                    <div class="block-content block-content-sm block-content-full bg-body-light rounded-bottom">
-                        <div class="row">
-                            <div class="col-12 text-right">
-                                <button class="btn btn-warning" id="editButton">
-                                    Mettre à jour <i class="fa fa-angle-right ml-1"></i>
-                                </button>
+                </div>
+                <div class="col-md-12" id="menu-editor" style="display: none;">
+                    <div class="block block-rounded">
+                        <div class="block-header block-header-default">
+                            <h3 class="block-title">Edition d'une réponse en cours</h3>
+                        </div>
+                        <div class="block-content">
+                            <form class="">
+                                <div class="form-group">
+                                    <label for="editInputText">Texte</label>
+                                    <textarea type="text" class="form-control" id="editInputText"
+                                              placeholder="Texte de votre choix"
+                                              required></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="block-content block-content-sm block-content-full bg-body-light rounded-bottom">
+                            <div class="row">
+                                <div class="col-12 text-right">
+                                    <button class="btn btn-warning" id="editButton">
+                                        Mettre à jour <i class="fa fa-angle-right ml-1"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -477,9 +471,11 @@
             );
 
             newIdCount++;
+            toastr.success('Element ajouté', 'Succès', true);
 
             $("#nestable .button-delete").on("click", deleteFromMenu);
             $("#nestable .button-edit").on("click", prepareEdit);
+            $('#addText').val('');
         };
 
 
@@ -488,7 +484,7 @@
 
         $(function () {
 
-            var obj = '{{ array|raw }}';
+            var obj = null;
             var output = '';
 
             function buildItem(item) {
@@ -517,46 +513,52 @@
 
             }
 
-            $.each(JSON.parse(obj), function (index, item) {
-                output += buildItem(item);
-            });
+            $.ajax({
+                url: '{{ path('chatbot_list_answer') }}',
+                type: 'GET',
+                success: function (response) {
+                    if (response.type === "success") {
+                        obj = response.datas
+                        $.each((obj), function (index, item) {
+                            output += buildItem(item);
+                        });
+                        $('.dd-list').html(output);
+                        $('#nestable').nestable({maxDepth: 100}).on('change', updateOutput);
+                        editButton.on("click", editMenuItem);
 
-            $('.dd-list').html(output);
-            $('#nestable').nestable({maxDepth: 100}
-            ).on('change', updateOutput);
+                        $("#nestable .button-delete").on("click", deleteFromMenu);
 
-            editButton.on("click", editMenuItem);
+                        $("#nestable .button-edit").on("click", prepareEdit);
 
-            $("#nestable .button-delete").on("click", deleteFromMenu);
+                        $("#menu-editor").submit(function (e) {
+                            e.preventDefault();
+                        });
 
-            $("#nestable .button-edit").on("click", prepareEdit);
+                        $("#menu-add").submit(function (e) {
+                            e.preventDefault();
+                            addToMenu();
+                        });
 
-            $("#menu-editor").submit(function (e) {
-                e.preventDefault();
-            });
-
-            $("#menu-add").submit(function (e) {
-                e.preventDefault();
-                addToMenu();
-            });
-
-            $("#updateRobot").submit(function (e) {
-                e.preventDefault();
-                var data = $('#nestable').nestable('serialize');
-                $.ajax({
-                    url: '{{ path('chatbot_update') }}',
-                    type: 'POST',
-                    data: {
-                        data: data
-                    },
-                    success: function (response) {
-                        if (response.type === "success") {
-                            toastr.success(response.message, 'Succès', true);
-                        } else {
-                            toastr.error(response.message, 'Erreur', true);
-                        }
+                        $("#updateRobot").submit(function (e) {
+                            e.preventDefault();
+                            var data = $('#nestable').nestable('serialize');
+                            $.ajax({
+                                url: '{{ path('chatbot_update') }}',
+                                type: 'POST',
+                                data: {
+                                    data: data
+                                },
+                                success: function (response) {
+                                    if (response.type === "success") {
+                                        toastr.success(response.message, 'Succès', true);
+                                    } else {
+                                        toastr.error(response.message, 'Erreur', true);
+                                    }
+                                }
+                            });
+                        });
                     }
-                });
+                }
             });
         });
     </script>

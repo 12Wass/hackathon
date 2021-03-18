@@ -20,26 +20,35 @@ class AdminAnswerController extends AbstractController
     /**
      * @Route("/", name="chatbot_view", methods={"GET"})
      */
-    public function index(AnswerRepository $answerRepository, ChatbotService $chatbotService): Response
+    public function index(): Response
     {
-        $firstAnswers = $answerRepository->findBy(['first' => true]);
-        $array = [];
-        foreach ($firstAnswers as $firstAnswer) {
-            $array[] = [
-                'id' => $firstAnswer->getId(),
-                'text' => $firstAnswer->getText()
-            ];
-            $array = $chatbotService->recursiveSerialize($firstAnswer, $array);
-        }
-        return $this->render('admin/answer/index.html.twig', [
-            'array' => json_encode($array)
-        ]);
+        return $this->render('admin/answer/index.html.twig');
     }
 
     /**
-     * @Route("/update", name="chatbot_update")
+     * @Route("/update", name="chatbot_list_answer", methods={"GET"})
      */
-    public function changeState(Request $request, AnswerRepository $answerRepository, ChatbotService $chatbotService)
+    public function getChatbotAnswer(Request $request, AnswerRepository $answerRepository, ChatbotService $chatbotService)
+    {
+        if ($request->isXmlHttpRequest()) {
+            $firstAnswers = $answerRepository->findBy(['first' => true]);
+            $array = [];
+            foreach ($firstAnswers as $firstAnswer) {
+                $array[] = [
+                    'id' => $firstAnswer->getId(),
+                    'text' => $firstAnswer->getText()
+                ];
+                $array = $chatbotService->recursiveSerialize($firstAnswer, $array);
+            }
+            return $this->json(['type' => 'success', 'datas' => $array]);
+        }
+        return $this->json(['type' => 'error', 'message' => 'Erreur'], 400);
+    }
+
+    /**
+     * @Route("/update", name="chatbot_update", methods={"POST"})
+     */
+    public function updateChatbotAnswer(Request $request, AnswerRepository $answerRepository, ChatbotService $chatbotService)
     {
         if ($request->isXmlHttpRequest()) {
             if (!empty($datas = ($request->request->get('data')))) {
