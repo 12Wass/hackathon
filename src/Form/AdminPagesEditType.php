@@ -23,13 +23,8 @@ class AdminPagesEditType extends AbstractType
             ->add('name', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
-                    'placeholder' => 'Nom'
-                ]
-            ])
-            ->add('route', TextType::class, [
-                'attr' => [
-                    'class' => 'form-control',
-                    'placeholder' => 'Route'
+                    'placeholder' => 'Nom',
+                    'disabled' => true
                 ]
             ])
             ->add('title', TextType::class, [
@@ -43,10 +38,14 @@ class AdminPagesEditType extends AbstractType
                     'uiColor' => '#ffffff'
                 )
             ))
-            ->add('type', TextType::class, [
+            ->add('type', ChoiceType::class, [
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Type'
+                ],
+                'choices' => [
+                    'Article' => 'article',
+                    'Page' => 'page'
                 ]
             ]);
     }

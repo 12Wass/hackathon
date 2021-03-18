@@ -25,11 +25,6 @@ class Pages
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $route;
-
-    /**
      * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $title;
@@ -77,18 +72,6 @@ class Pages
     public function setName(?string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getRoute(): ?string
-    {
-        return $this->route;
-    }
-
-    public function setRoute(string $route): self
-    {
-        $this->route = $route;
 
         return $this;
     }

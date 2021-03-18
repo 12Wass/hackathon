@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Pages;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,12 +21,6 @@ class AdminPagesNewType extends AbstractType
                     'placeholder' => 'Nom'
                 ]
             ])
-            ->add('route', TextType::class, [
-                'attr' => [
-                    'class' => 'form-control',
-                    'placeholder' => 'Route'
-                ]
-            ])
             ->add('title', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
@@ -37,10 +32,14 @@ class AdminPagesNewType extends AbstractType
                     'uiColor' => '#ffffff'
                 )
             ))
-            ->add('type', TextType::class, [
+            ->add('type', ChoiceType::class, [
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Type'
+                ],
+                'choices' => [
+                    'Article' => 'article',
+                    'Page' => 'page'
                 ]
             ]);
     }
