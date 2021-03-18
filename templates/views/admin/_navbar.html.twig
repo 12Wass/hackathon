@@ -42,6 +42,25 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-main-item {% if (route_name == 'page_list') or (route_name == 'page_new') or (route_name == 'page_edit') %}open{% endif %}">
+                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
+                        <i class="nav-main-link-icon fa fa-users"></i>
+                        <span class="nav-main-link-name">Pages</span>
+                    </a>
+                    <ul class="nav-main-submenu">
+                        <li class="nav-main-item">
+                            <a class="nav-main-link {% if route_name == 'page_list' %}active{% endif %}" href="{{ path('page_list') }}">
+                                <span class="nav-main-link-name">Liste</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link {% if route_name == 'page_new' %}active{% endif %}" href="{{ path('page_new') }}">
+                                <span class="nav-main-link-name">Ajouter</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

@@ -2278,3 +2278,216 @@ body.dyslexique-mode #rejoindre div article h3,body.dyslexique-mode a,body.dysle
 .search-query:focus + button {
   z-index: 3;
 }
+
+/*css toggle blackmode*/
+input[type="checkbox"].switch {
+    font-size: 22px;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    width: 3.5em;
+    height: 1.5em;
+    background: #ddd;
+    border-radius: 3em;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    margin: 8px 0 0;
+}
+
+input[type="checkbox"].switch.enable:checked {
+    background: #03DAC6;
+}
+
+input[type="checkbox"].switch:after {
+    position: absolute;
+    content: "";
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    background: #fff;
+    -webkit-box-shadow: 0 0 .25em rgba(0,0,0,.3);
+            box-shadow: 0 0 .25em rgba(0,0,0,.3);
+    -webkit-transform: scale(.7);
+            transform: scale(.7);
+    left: 0;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+input[type="checkbox"].switch.enable:checked:after {
+    left: calc(100% - 1.5em);
+}
+
+/*css toggle notification*/
+input[type="checkbox"]#checkNotif.switch {
+    font-size: 22px;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    width: 3.5em;
+    height: 1.5em;
+    background: #ddd;
+    border-radius: 3em;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    margin: 8px 0 0;
+}
+
+input[type="checkbox"]#checkNotif.switch:checked {
+    background: #03DAC6;
+}
+
+input[type="checkbox"]#checkNotif.switch:after {
+    position: absolute;
+    content: "";
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    background: #fff;
+    -webkit-box-shadow: 0 0 .25em rgba(0,0,0,.3);
+            box-shadow: 0 0 .25em rgba(0,0,0,.3);
+    -webkit-transform: scale(.7);
+            transform: scale(.7);
+    left: 0;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+input[type="checkbox"]#checkNotif.switch:checked:after {
+    left: calc(100% - 1.5em);
+}
+
+.notification-icon,
+.blackmode-icon {
+    font-size: 30px !important;
+    margin-right: 10px;
+}
+
+#home {
+    padding-top: 75px;
+    padding-bottom: 40px;
+}
+#home #textHome
+{
+    position:relative;
+    float: left;
+    width:40%;
+}
+
+#home #imgHome
+{
+    padding-top: 20px;
+    margin-left: auto;
+    display: flex;
+    position:relative;
+    width:60%;
+}
+
+.searchDispo {
+    background: #E1000F;
+    color: #FFF;
+    border: 1px;
+    border-radius: 0px;
+    font-size: 16px;
+    padding: 15px 30px;
+}
+
+.searchDispo:hover {
+    color: #E1000F !important;
+    background: #FFF;
+}
+
+div#inner1{
+    flex: 1;
+}
+
+div#inner2{
+    flex: 1;
+    margin-left:25px;
+}
+
+.col-md-4{
+  display: inline-block;
+  margin-left:-10px;
+}
+.col-md-4 img{
+  width:100%;
+  height:auto;
+}
+  
+body .carousel-control-prev-icon,
+body .carousel-indicators li,
+body .carousel-control-next-icon{
+  background-color:#000;
+}
+
+span.carousel-control-prev-icon {
+ position: relative;
+ bottom: 40px;
+ right: 40px;
+}
+
+span.carousel-control-next-icon {
+ position: relative;
+ bottom: 40px;
+}
+
+/*
+#link {
+    position: relative;
+    text-align: center;
+    display : inline-flex;
+    height:200px;
+    z-index:2;
+    margin-left: 25%;
+    padding-top: 65px;
+}*/
+
+#titreActualités {
+    font-size: 50px;
+    margin-left: 80px;
+    color: #000091;
+    font-family: "MarianneBold",sans-serif;
+}
+
+.underline-small{
+  display:inline-block;
+  position:relative;
+  
+}
+
+.underline-small::after{
+  content:'';
+  height:3px;
+  width:70%;
+  background:#000091;
+  position:absolute;
+  left:calc(10% - 10%);
+  bottom:-5px;
+}
+
+#actualites {
+    padding-top: 25%; 
+    background-color: #e5e5f4; 
+    padding-bottom: 5%
+}
+
+.opacity a img {
+    opacity: 1;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.opacity a:hover img {
+    opacity: .5;
+}
+/*.img-fluid img:hover {
+  background: #50b948;
+  opacity: 1.0;
+}*/
+/*a img #img-fluid:hover {
+    opacity: 2.0;
+}*/

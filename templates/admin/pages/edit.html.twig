@@ -1,0 +1,68 @@
+{% extends 'views/admin/layout.html.twig' %}
+
+{% block body %}
+    <div class="content">
+        <div class="block block-rounded">
+            <div class="block-header block-header-default">
+                <h3 class="block-title">Editer la page {{ page.name }}
+                </h3>
+            </div>
+            <div class="block-content">
+                <div class="row justify-content-center">
+                    <div class="col-md-10 col-lg-8">
+                        {{ form_start(form,{'attr': {'id': 'user'}}) }}
+                        <div class="form-row">
+                            <div class="col-sm-6 mb-3">
+                                <label>Nom</label>
+                                {{ form_widget(form.name) }}
+                                {{ form_errors(form.name) }}
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <label>Route</label>
+                                {{ form_widget(form.route) }}
+                                {{ form_errors(form.route) }}
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <label>Titre</label>
+                                {{ form_widget(form.title) }}
+                                {{ form_errors(form.title) }}
+                            </div>
+                            <div class="col-sm-12 mb-3">
+                                <label>Contenu</label>
+                                {{ form_widget(form.content) }}
+                                {{ form_errors(form.content) }}
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <label>Type</label>
+                                {{ form_widget(form.type) }}
+                                {{ form_errors(form.type) }}
+                            </div>
+{#                            <div class="col-sm-6 mb-3">
+                                <label>Supprimé le</label>
+                                <input type="text" disabled class="form-control"
+                                       value="{{ page.deleteAt ? user.deleteAt|date('d/m/Y h:i') : 'Jamais' }}">
+                            </div>#}
+                            <div class="col-sm-6 mb-3">
+                                <label>Créée le</label>
+                                <input type="text" disabled class="form-control"
+                                       value="{{ page.createdAt|date('d/m/Y h:i') }}">
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <label>Modifié le</label>
+                                <input type="text" disabled class="form-control"
+                                       value="{{ page.updatedAt ? page.updatedAt|date('d/m/Y h:i') : 'Jamais' }}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-alt-primary">Mettre à jour</button>
+                        </div>
+                        {{ form_end(form) }}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
