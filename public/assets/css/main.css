@@ -202,17 +202,6 @@ h4 {
     }
 }
 
-#error section {
-    height: 80vh;
-    width: 100%;
-    background-image: url(/static/media/ConducteurDeTraveaux.36eb6ebe.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-color: #1b385e;
-    overflow: hidden!important
-}
-
 #error section #filter-error {
     position: absolute;
     top: 0;
@@ -257,25 +246,13 @@ h4 {
 
 @font-face {
     font-family: MarianneRegular;
-    src: local("../../fonts/Marianne-Regular.ttf"),local("../../fonts/Marianne-Regular.otf"),url(/static/media/Marianne-Regular.be4c68d3.ttf);
+    src: url("/assets/fonts/Marianne-Regular.ttf"),url("/assets/fonts/Marianne-Regular.otf"),url(/assets/fonts/Marianne-Regular.ttf);
     font-weight: 400
 }
 
 @font-face {
     font-family: MarianneBold;
-    src: local("../../fonts/Marianne-Bold.ttf"),local("../../fonts/Marianne-Bold.woff2"),url(/static/media/Marianne-Bold.ece711a5.ttf);
-    font-weight: 700
-}
-
-@font-face {
-    font-family: OpenDyslexicRegular;
-    src: local("../../fonts/OpenDyslexic-Regular.otf"),local("../../fonts/OpenDyslexic-Regular.woff"),local("../../fonts/OpenDyslexic-Regular.woff2"),url(/static/media/OpenDyslexic-Regular.1b7d7a35.otf);
-    font-weight: 400
-}
-
-@font-face {
-    font-family: OpenDyslexicBold;
-    src: local("../../fonts/OpenDyslexic-Bold.otf"),local("../../fonts/OpenDyslexic-Bold.woff"),local("../../fonts/OpenDyslexic-Bold.woff2"),url(/static/media/OpenDyslexic-Bold.f3325e76.otf);
+    src: url("/assets/fonts/Marianne-Bold.ttf"),url("/assets/fonts/Marianne-Bold.woff2"),url(/assets/fonts/Marianne-Bold.ttf);
     font-weight: 700
 }
 

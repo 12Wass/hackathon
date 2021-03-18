@@ -8,7 +8,7 @@
             display: block;
             margin: 0;
             padding: 0;
-            max-width: 600px;
+            max-width: 90%;
             list-style: none;
             font-size: 13px;
             line-height: 20px;
@@ -193,11 +193,6 @@
             color: #fff;
         }
 
-        .dd {
-        / / float: left;
-        / / width: 48 %;
-            width: 80%;
-        }
 
         .dd + .dd {
             margin-left: 2%;
@@ -207,9 +202,6 @@
             background: #2ea8e5 !important;
         }
 
-        /**
-        * Nestable Draggable Handles
-        */
         .dd3-content {
             display: block;
             height: 30px;
@@ -530,7 +522,8 @@
             });
 
             $('.dd-list').html(output);
-            $('#nestable').nestable().on('change', updateOutput);
+            $('#nestable').nestable({maxDepth: 100}
+            ).on('change', updateOutput);
 
             editButton.on("click", editMenuItem);
 
