@@ -44,14 +44,14 @@ class AdminPageController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if (!empty($page->getRoute())) {
+            if (!empty($page->getName())) {
                 $page->setCreatedAt(new \DateTime());
                 $this->getDoctrine()->getManager()->persist($page);
                 $this->getDoctrine()->getManager()->flush();
                 $this->addFlash('success', 'Page créée');
                 return $this->redirectToRoute('page_list');
             }
-            $this->addFlash('error', 'Veuillez saisir une route');
+            $this->addFlash('error', 'Veuillez saisir un nom');
         }
 
         return $this->render('admin/pages/new.html.twig', [
@@ -108,8 +108,8 @@ class AdminPageController extends AbstractController
     public function test(Request $request, PagesRepository $pagesRepository): Response
     {
 
-        $page = $pagesRepository->findOneBy(['id' => 8]);
-        return $this->render('admin/pages/content.html.twig', [
+        $page = $pagesRepository->findOneBy(['id' => 9]);
+        return $this->render('admin/pages/article.html.twig', [
             'page' => $page,
         ]);
     }
