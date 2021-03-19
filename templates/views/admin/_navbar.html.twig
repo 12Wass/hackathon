@@ -43,19 +43,38 @@
                     </ul>
                 </li>
 
-                <li class="nav-main-item {% if (route_name == 'page_list') or (route_name == 'page_new') or (route_name == 'page_edit') %}open{% endif %}">
+                <li class="nav-main-item {% if (route_name == 'article_list') or (route_name == 'article_new') or (route_name == 'article_edit') %}open{% endif %}">
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
-                        <i class="nav-main-link-icon fa fa-users"></i>
-                        <span class="nav-main-link-name">Pages</span>
+                        <i class="nav-main-link-icon fa fa-newspaper"></i>
+                        <span class="nav-main-link-name">Articles</span>
                     </a>
                     <ul class="nav-main-submenu">
                         <li class="nav-main-item">
-                            <a class="nav-main-link {% if route_name == 'page_list' %}active{% endif %}" href="{{ path('page_list') }}">
+                            <a class="nav-main-link {% if route_name == 'article_list' %}active{% endif %}" href="{{ path('article_list') }}">
                                 <span class="nav-main-link-name">Liste</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link {% if route_name == 'page_new' %}active{% endif %}" href="{{ path('page_new') }}">
+                            <a class="nav-main-link {% if route_name == 'article_new' %}active{% endif %}" href="{{ path('article_new') }}">
+                                <span class="nav-main-link-name">Ajouter</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-main-item {% if (route_name == 'category_list') or (route_name == 'category_new') or (route_name == 'category_edit') %}open{% endif %}">
+                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
+                        <i class="nav-main-link-icon fa fa-newspaper"></i>
+                        <span class="nav-main-link-name">Catégorie d'article</span>
+                    </a>
+                    <ul class="nav-main-submenu">
+                        <li class="nav-main-item">
+                            <a class="nav-main-link {% if route_name == 'category_list' %}active{% endif %}" href="{{ path('category_list') }}">
+                                <span class="nav-main-link-name">Liste</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link {% if route_name == 'category_new' %}active{% endif %}" href="{{ path('category_new') }}">
                                 <span class="nav-main-link-name">Ajouter</span>
                             </a>
                         </li>
@@ -91,19 +110,14 @@
                     </ul>
                 </li>
 
-                <li class="nav-main-item {% if (route_name == 'chatbot_view') %}open{% endif %}">
-                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
-                        <i class="nav-main-link-icon fa fa-users"></i>
+
+                <li class="nav-main-item">
+                    <a class="nav-main-link {% if route_name == 'chatbot_view' %}active{% endif %}" href="{{ path('chatbot_view') }}">
+                        <i class="nav-main-link-icon fa fa-robot"></i>
                         <span class="nav-main-link-name">Chatbot</span>
                     </a>
-                    <ul class="nav-main-submenu">
-                        <li class="nav-main-item">
-                            <a class="nav-main-link {% if route_name == 'chatbot_view' %}active{% endif %}" href="{{ path('chatbot_view') }}">
-                                <span class="nav-main-link-name">Gérer</span>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
+
             </ul>
         </div>
     </div>
