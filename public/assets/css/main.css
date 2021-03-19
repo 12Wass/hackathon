@@ -246,13 +246,13 @@ h4 {
 
 @font-face {
     font-family: MarianneRegular;
-    src: url("/public/assets/fonts/Marianne-Regular.ttf"),url("/public/assets/fonts/Marianne-Regular.otf"),url(/public/assets/fonts/Marianne-Regular.ttf);
+    src: url("/assets/fonts/Marianne-Regular.ttf"),url("/assets/fonts/Marianne-Regular.otf"),url(/assets/fonts/Marianne-Regular.ttf);
     font-weight: 400
 }
 
 @font-face {
     font-family: MarianneBold;
-    src: url("/public/assets/fonts/Marianne-Bold.ttf"),url("/public/assets/fonts/Marianne-Bold.woff2"),url(/public/assets/fonts/Marianne-Bold.ttf);
+    src: url("/assets/fonts/Marianne-Bold.ttf"),url("/assets/fonts/Marianne-Bold.woff2"),url(/assets/fonts/Marianne-Bold.ttf);
     font-weight: 700
 }
 
