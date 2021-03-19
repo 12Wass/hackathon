@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/admin/chatbot")
- * @IsGranted("ROLE_SUPER_ADMIN")
+ * @IsGranted("ROLE_ADMIN")
  */
 class AdminAnswerController extends AbstractController
 {
