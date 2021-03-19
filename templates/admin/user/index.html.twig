@@ -41,7 +41,6 @@
                         <td>{{ user.createdAt|date('Y-m-d H:i:s') }}</td>
                         <td>{{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : 'Jamais' }}</td>
                         <td>
-                            <a data-toggle="tooltip" data-placement="top" title="Voir" class="btn btn-small btn-primary" href="{{ path('user_show', {'id': user.id}) }}"><i class="fa fa-eye"></i></a>
                             <a data-toggle="tooltip" data-placement="top" title="Editer" class="btn btn-small btn-warning" href="{{ path('user_edit', {'id': user.id}) }}"><i class="fa fa-pen"></i></a>
                             <a data-toggle="tooltip" data-placement="top" title="Supprimer" class="btn btn-small btn-danger" href="{{ path('user_delete', {'id': user.id}) }}"><i class="fa fa-trash"></i></a>
                         </td>

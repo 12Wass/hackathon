@@ -1,10 +1,8 @@
-{% extends 'views/pages/layout.html.twig' %}
+a{% extends 'views/front/layout.html.twig' %}
 
 {% block body %}
 
-    <div class="container body">
-{{ page.content|raw }}
-    </div>
+    {{ page.content|raw }}
 
 {% endblock %}
 

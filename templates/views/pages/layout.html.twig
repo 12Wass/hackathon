@@ -1,8 +1,6 @@
 <html lang="fr" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <link rel="icon" href="/favico-64.png">
-    <link rel="manifest" href="/manifest.json">
     <title>{{ page.title|default('Civils de la Défense') }}</title>
     <meta name="author" content="Civils de la Défense">
     <meta name="language" content="fr">
@@ -23,16 +21,17 @@
     {% block stylesheets %}
     {% endblock %}
 </head>
-{% include 'views/public/_header.html.twig' %}
+{% include 'views/pages/_header.html.twig' %}
 <body>
 
 <section id="root" class="container">
+    <main role="main">
 
 {% block body %}
 {% endblock %}
-
-    {% include 'views/public/_footer.html.twig' %}
-    {% include 'views/public/_darkmode.html.twig' %}
+    </main>
+    {% include 'views/pages/_footer.html.twig' %}
+    {% include 'views/pages/_darkmode.html.twig' %}
 </section>
 
 
