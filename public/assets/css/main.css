@@ -83,10 +83,6 @@ b,strong {
     font-size: 17px
 }
 
-li {
-    list-style: none
-}
-
 h1 {
     font-size: 45px
 }
@@ -935,9 +931,16 @@ header nav ul {
 }
 
 header nav ul a {
-    color: #004494;
+    color: #000691;
     font-weight: 600;
     text-transform: uppercase
+}
+
+header nav ul a:hover {
+    color: #000691;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: underline !important;
 }
 
 header nav ul:first-child {

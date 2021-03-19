@@ -1,5 +1,5 @@
 {% extends 'views/public/layout.html.twig' %}
-
+{% block title %}Trouver mon dispositif{% endblock %}
 {% block body %}
     <style>
         #chatbot .dominiqueimg {
@@ -80,6 +80,7 @@
             display: inline-block;
             font-size: 16px;
             border-radius: 25px;
+            border: unset;
         }
 
         .button-response {
@@ -99,6 +100,78 @@
             background-color: #000091;
             color: #fff;
         }
+
+
+        .spinme-right {
+            display: inline-block;
+            padding: 15px 20px;
+            font-size: 14px;
+            border-radius: 30px;
+            line-height: 1.25em;
+            font-weight: 100;
+            opacity: 0.2;
+        }
+
+        .spinme-left {
+            display: inline-block;
+            padding: 15px 20px;
+            font-size: 14px;
+            color: #ccc;
+            border-radius: 30px;
+            line-height: 1.25em;
+            font-weight: 100;
+            opacity: 0.2;
+        }
+
+        .spinner {
+            margin: 0;
+            width: 50px;
+            text-align: center;
+        }
+
+        .spinner > div {
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
+            display: inline-block;
+            -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+            animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+            background: rgba(0, 0, 0, 1);
+        }
+
+        .spinner .bounce1 {
+            -webkit-animation-delay: -0.32s;
+            animation-delay: -0.32s;
+        }
+
+        .spinner .bounce2 {
+            -webkit-animation-delay: -0.16s;
+            animation-delay: -0.16s;
+        }
+
+        @-webkit-keyframes sk-bouncedelay {
+            0%,
+            80%,
+            100% {
+                -webkit-transform: scale(0)
+            }
+            40% {
+                -webkit-transform: scale(1.0)
+            }
+        }
+
+        @keyframes sk-bouncedelay {
+            0%,
+            80%,
+            100% {
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            }
+            40% {
+                -webkit-transform: scale(1.0);
+                transform: scale(1.0);
+            }
+        }
     </style>
 
     <main role="main">
@@ -113,6 +186,7 @@
                     </div>
                     <div class="col-md-9" id="box">
                         <div class="row" id="chat">
+
                         </div>
                         <br><br>
                         <div class="row" id="answers">
@@ -128,10 +202,30 @@
     <script>
         var chatBotMessage = $("#chat");
         var answers = $("#answers");
-        $(function () {
-            var addAnswerAndQuestion = function (response) {
-                if (response.data.length > 0) {
-                    response.data.forEach(item => {
+
+        var scrollBottom = function () {
+            $('#box').animate({
+                scrollTop: $('#box').offset().top
+            }, 'slow');
+        }
+        var addAnswerAndQuestion = function (response) {
+            if (response.data.length > 0) {
+                chatBotMessage.append(
+                    '<div class="loader" id="loader">' +
+                    '<span class="spinme-right">' +
+                    '<div class="spinner">' +
+                    '<div class="bounce1"></div>' +
+                    '<div class="bounce2"></div>' +
+                    '<div class="bounce3"></div>' +
+                    '</div>' +
+                    '</span>' +
+                    '</div>'
+                )
+                answers.html('')
+
+                response.data.forEach(item => {
+                    setTimeout(function () {
+                        $("#loader").remove()
                         chatBotMessage.append(
                             '<div class="col-sm-12 answer">' +
                             '<div class="chat-text">' +
@@ -149,45 +243,52 @@
                             })
                             answers.html(html)
                             $(".button-response").on("click", answerQuestion);
+                            scrollBottom()
                         } else {
                             answers.html('<div class="col-md-12 text-center">' +
-                                '<button class="button-finish" disabled>Vous êtes arrivés au bout du questionnaire !</button>' +
+                                '<button class="button-finish" onclick="startChat()">Vous êtes arrivés au bout du questionnaire ! Cliquer ici pour relancer</button>' +
                                 '</div>')
+                            scrollBottom()
                         }
-                    })
-                } else {
-                    answers.html('<div class="col-md-12 text-center">' +
-                        '<button class="button-finish" disabled>Vous êtes arrivés au bout du questionnaire !</button>' +
-                        '</div>')
-                }
-                $("#box").animate({ scrollTop: $('#box').prop("scrollHeight")}, 1000);
+                    }, 3000);
+                })
+            } else {
+                answers.html('<div class="col-md-12 text-center">' +
+                    '<button class="button-finish" onclick="startChat()">Vous êtes arrivés au bout du questionnaire ! Cliquer ici pour relancer</button>' +
+                    '</div>')
+                scrollBottom()
             }
 
-            var addResponse = function (text) {
-                chatBotMessage.append(
-                    '<div class="col-sm-12 response">' +
-                    '<div class="chat-text">' +
-                    '<p class="mb-0">' + text + '</p>' +
-                    '</div>' +
-                    '</div>'
-                );
-            }
+        }
 
-            var answerQuestion = function () {
-                var id = $(this).data('id');
-                var text = $(this).text();
-                $.ajax({
-                    url: 'chatbot/' + id,
-                    type: 'GET',
-                    success: function (response) {
-                        if (response.type === "success") {
-                            addResponse(text)
-                            addAnswerAndQuestion(response)
-                        }
+        var addResponse = function (text) {
+            chatBotMessage.append(
+                '<div class="col-sm-12 response">' +
+                '<div class="chat-text">' +
+                '<p class="mb-0">' + text + '</p>' +
+                '</div>' +
+                '</div>'
+            );
+        }
+
+        var answerQuestion = function () {
+            var id = $(this).data('id');
+            var text = $(this).text();
+            $.ajax({
+                url: 'chatbot/' + id,
+                type: 'GET',
+                success: function (response) {
+                    if (response.type === "success") {
+                        addResponse(text)
+                        addAnswerAndQuestion(response)
                     }
-                });
-            };
+                }
+            });
+        };
 
+        var startChat = function () {
+            chatBotMessage.html('')
+            answers.html('')
             $.ajax({
                 url: '{{ path('chatbot_get_first_answer') }}',
                 type: 'GET',
@@ -197,6 +298,9 @@
                     }
                 }
             });
+        }
+        $(function () {
+            startChat()
         });
     </script>
 {% endblock %}

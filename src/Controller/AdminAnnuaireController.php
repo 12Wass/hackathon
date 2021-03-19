@@ -21,7 +21,7 @@ use Symfony\Component\Asset\Packages;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 /**
  * @Route("/admin/annuaire")
- * @IsGranted("ROLE_SUPER_ADMIN")
+ * @IsGranted("ROLE_ADMIN")
  */
 class AdminAnnuaireController extends AbstractController
 {
