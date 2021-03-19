@@ -18,4 +18,12 @@ class HomeController extends AbstractController
     {
         return $this->render('public/home/index.html.twig');
     }
+
+    /**
+     * @Route("/devenir-formateur-interne", name="devenir_formateur_interne")
+     */
+    public function becomeFormateur(): Response
+    {
+        return $this->render('public/pages/devenirFormateur.html.twig');
+    }
 }
