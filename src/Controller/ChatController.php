@@ -14,9 +14,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class ChatController extends AbstractController
 {
     /**
-     * @Route("/chatbot", name="chatbot")
+     * @Route("/trouver-mon-dispositif", name="chatbot")
      */
-    public function home(ChatbotService $chatbotService, AnswerRepository $answerRepository): Response
+    public function home(): Response
     {
         return $this->render('public/chatbot/index.html.twig');
     }
