@@ -85,6 +85,12 @@ class Article
      */
     private $slug;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="articles", cascade="persist")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $category;
+
     public function getSlug(): ?string
     {
         return $this->slug;
@@ -220,5 +226,17 @@ class Article
     public function getMiniatureName(): ?string
     {
         return $this->miniatureName;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
     }
 }

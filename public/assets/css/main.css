@@ -1007,7 +1007,8 @@ header nav ul li:last-child {
     padding: 5vh 0;
     background-color: #fff;
     z-index: 99;
-    position: relative
+    position: relative;
+    box-shadow: 0 .4rem 1rem rgba(0,0,0,.15)!important;
 }
 
 #footer div .col-4 {

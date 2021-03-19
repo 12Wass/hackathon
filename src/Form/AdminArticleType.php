@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Article;
+use App\Entity\Category;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -15,6 +17,13 @@ class AdminArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('category', EntityType::class, array(
+                'invalid_message' => 'La catégorie n\'a pas été trouvée',
+                'class' => Category::class,
+                'multiple' => false,
+                'choice_label' => 'name',
+                'attr' => ['class' => 'form-control mb-3']
+            ))
             ->add('title', TextType::class, array('attr' => array('class' => 'form-control mb-3', 'placeholder' => 'Titre de l\'article')))
             ->add('author', TextType::class, array('attr' => array('class' => 'form-control mb-3', 'placeholder' => 'Auteur de l\'article')))
             ->add('online', ChoiceType::class, array(

@@ -9,9 +9,9 @@
     <div class="content">
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Liste des articles</h3>
+                <h3 class="block-title">Liste des categories</h3>
                 <div class="block-options">
-                    <a href="{{ path('article_new') }}">
+                    <a href="{{ path('category_new') }}">
                         <button class="btn btn-sm btn-outline-success">
                             <i class="fa fa-plus"></i> Nouveau
                         </button>
@@ -22,36 +22,28 @@
                 <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
                     <thead>
                     <tr>
-                        <th>Titre</th>
-                        <th>En ligne</th>
-                        <th>Catégorie</th>
-                        <th>Auteur</th>
-                        <th>Publication</th>
+                        <th>Nom</th>
+                        <th>Nombre d'articles</th>
+                        <th>Créer</th>
                         <th>Dernière modification</th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for article in articles %}
+                    {% for category in categories %}
                         <tr>
-                            <td>{{ article.title }}</td>
-                            <td>{{ article.online ? '<span class="badge badge-success">Oui</span>' : '<span class="badge badge-danger">Non</span>' }}</td>
-                            <td><span class="badge badge-primary">{{ article.author }}</span></td>
-                            <td><span class="badge badge-info">{{ article.category.name }}</span></td>
-                            <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                            <td>{{ article.modifyAt ? article.modifyAt|date('Y-m-d H:i:s') : 'Aucune' }}</td>
+                            <td>{{ category.name }}</td>
+                            <td>{{ category.articles|length }}</td>
+                            <td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ category.updatedAt ? category.updatedAt|date('Y-m-d H:i:s') : 'Aucune' }}</td>
                             <td>
-                                <a data-toggle="tooltip" data-placement="top" title="Voir"
-                                   class="btn btn-small btn-primary" target="_blank"
-                                   href="{{ path('show_article', {'slug': article.slug}) }}"><i
-                                            class="fa fa-eye"></i></a>
                                 <a data-toggle="tooltip" data-placement="top" title="Editer"
                                    class="btn btn-small btn-warning"
-                                   href="{{ path('article_edit', {'id': article.id}) }}"><i
+                                   href="{{ path('category_edit', {'id': category.id}) }}"><i
                                             class="fa fa-pen"></i></a>
                                 <a data-toggle="tooltip" data-placement="top" title="Supprimer"
                                    class="btn btn-small btn-danger"
-                                   href="{{ path('article_delete', {'id': article.id}) }}"><i
+                                   href="{{ path('category_delete', {'id': category.id}) }}"><i
                                             class="fa fa-trash"></i></a>
                             </td>
                         </tr>

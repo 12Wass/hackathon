@@ -1,0 +1,17 @@
+{% extends 'views/public/layout.html.twig' %}
+{% block body %}
+    <main role="main">
+        <section style="padding-top: 9%;padding-bottom: 5%">
+            <div class="container">
+                <div class="row">
+                    {% for article in articles %}
+                        {% include 'public/article/_articleBlock.html.twig' %}
+                    {% endfor %}
+
+                    {{ knp_pagination_render(articles) }}
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}
