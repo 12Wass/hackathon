@@ -21,14 +21,25 @@
         .title {
             color: #000091;
             text-align: center;
+            font-size: 35px;
             margin-bottom: 5rem;
+            font-family: 'MarianneRegular', sans-serif;
+            font-weight: bold;
+        }
+        .category-name {
+            color: #E1000F;
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 2rem;
+            font-family: 'MarianneRegular', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
         }
         .article-date {
             font-style: italic;
             color: grey;
             font-size: 12px;
         }
-
         .trait {
             width: 15%;
             height: 6px;
@@ -40,7 +51,9 @@
         <section style="padding-top: 6%;padding-bottom: 5%">
             <div class="bgimg-1"></div>
             <div class="container blockArticle">
+                <p class="category-name">{{ article.category.name }}</p>
                 <h1 class="title">{{ article.title }}</h1>
+                <p class="article-date">Par {{ article.author }}</p>
                 <div>
                     {{ article.content|raw }}
                 </div>
