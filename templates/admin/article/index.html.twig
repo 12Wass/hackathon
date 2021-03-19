@@ -1,0 +1,76 @@
+{% extends 'views/admin/layout.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('admin/js/plugins/datatables/dataTables.bootstrap4.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/js/plugins/datatables/buttons-bs4/buttons.bootstrap4.min.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <div class="block block-rounded">
+            <div class="block-header block-header-default">
+                <h3 class="block-title">Liste des articles</h3>
+                <div class="block-options">
+                    <a href="{{ path('article_new') }}">
+                        <button class="btn btn-sm btn-outline-success">
+                            <i class="fa fa-plus"></i> Nouveau
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="block-content block-content-full">
+                <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
+                    <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>En ligne</th>
+                        <th>Auteur</th>
+                        <th>Publication</th>
+                        <th>Dernière modification</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for article in articles %}
+                        <tr>
+                            <td>{{ article.title }}</td>
+                            <td>{{ article.online ? '<span class="badge badge-success">Oui</span>' : '<span class="badge badge-danger">Non</span>' }}</td>
+                            <td><span class="badge badge-primary">{{ article.author }}</span>
+                            </td>
+                            <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ article.modifyAt ? article.modifyAt|date('Y-m-d H:i:s') : 'Aucune' }}</td>
+                            <td>
+                                <a data-toggle="tooltip" data-placement="top" title="Voir"
+                                   class="btn btn-small btn-primary" target="_blank"
+                                   href="{{ path('article_edit', {'id': article.id}) }}"><i
+                                            class="fa fa-eye"></i></a>
+                                <a data-toggle="tooltip" data-placement="top" title="Editer"
+                                   class="btn btn-small btn-warning"
+                                   href="{{ path('article_edit', {'id': article.id}) }}"><i
+                                            class="fa fa-pen"></i></a>
+                                <a data-toggle="tooltip" data-placement="top" title="Supprimer"
+                                   class="btn btn-small btn-danger"
+                                   href="{{ path('article_delete', {'id': article.id}) }}"><i
+                                            class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset('admin/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('admin/js/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('admin/js/plugins/datatables/buttons/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('admin/js/plugins/datatables/buttons/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('admin/js/plugins/datatables/buttons/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('admin/js/plugins/datatables/buttons/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('admin/js/plugins/datatables/buttons/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('admin/js/pages/datatables.js') }}"></script>
+{% endblock %}
