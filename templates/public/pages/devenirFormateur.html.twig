@@ -1,0 +1,112 @@
+{% extends 'views/public/layout.html.twig' %}
+{% block body %}
+    <style>
+        .bgimg-1 {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .bgimg-1 {
+            background-image: url("{{ asset('assets/images/becomeformateur.png') }}");
+            height: 100vh;
+            width: 100%;
+        }
+
+        .caption {
+            position: absolute;
+            top: 20%;
+            padding: 50px;
+            color: #fff;
+        }
+
+        label {
+            font-size: 16px;
+            color: #000091;
+            font-weight: bold;
+            font-family: 'MarianneRegular', sans-serif;
+        }
+
+        .form-control {
+            border-bottom: solid red 3px;
+            border-radius: unset;
+        }
+
+    </style>
+    <main role="main">
+        <section style="padding-top: 10%;padding-bottom: 5%">
+            <div class="row">
+                <div class="col-md-6 pr-0">
+                    <div class="bgimg-1 mb-5">
+                        <div class="caption">
+                            <h1>Devenir formateur interne</h1>
+                            <p>Afin de nous rejoindre en tant que formateur interne, vous pouvez soumettre une requête
+                                en remplissant le formulaire ci-contre. Votre demande sera étudiée sous peu et nous vous
+                                recontacterons au plus vite.
+
+                                <br><br>Tous les champs du formulaires sont obligatoires.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <form>
+                        <div class="container">
+                            <div class="col-12 pt-5 pb-5">
+                                <div class="form-row">
+                                    <div class="col-sm-6 mb-3">
+                                        <label>Nom</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-sm-6 mb-3">
+                                        <label>Miniature</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-sm-12 mb-3">
+                                        <label>Votre structure d'emploi</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-sm-12 mb-3">
+                                        <label>Adresse professionnelle</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-sm-12 mb-3">
+                                        <label>Structure rémunératrice</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-sm-6 mb-3">
+                                        <label>Structure Postel actuel</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-sm-6 mb-3">
+                                        <label>Tel. perso</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-sm-12 mb-3">
+                                        <label>Adresse mail professionnelle</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-sm-12 mb-3">
+                                        <label>Adresse mail personnelle</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-sm-12 mb-3">
+                                        <label>Domaines d’expériences et ancienneté dans le domaine</label>
+                                        <textarea type="text" class="form-control"></textarea>
+                                    </div>
+                                    <div class="col-sm-12 mb-3">
+                                        <label>Le cas échéant, expérience comme formateur
+                                            (en présentiel ou à distanciel)</label>
+                                        <textarea type="text" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

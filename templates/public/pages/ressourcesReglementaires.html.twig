@@ -1,0 +1,116 @@
+{% extends 'views/public/layout.html.twig' %}
+{% block body %}
+    <style>
+        .trait {
+            width: 20%;
+            height: 6px;
+            margin-bottom: 30px;
+            background-color: #000091;
+        }
+        .button-response {
+            background-color: #fff;
+            border: 2px solid #00AC8C;
+            color: #00AC8C;
+            padding: 10px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 25px;
+        }
+    </style>
+    <main role="main">
+        <section style="padding-top: 10%;padding-bottom: 5%">
+            <div class="row">
+                <div class="container">
+                    <div class="col-md-12">
+                        <h1 class="sm" style="color: #000091">Ressources <br>réglementaires</h1>
+                        <div class="trait"></div>
+                        <span>Vous trouverez des ressources réglementaires sur les liens suivants.</span>
+                        <div id="accordion" class=" mt-5">
+                            <div class="card mb-2 border-0">
+                                <div class="card-header" id="headingOne"
+                                     style="background-color: #FF8D7E;border-radius: unset">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-decoration-none text-white"
+                                                data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                                aria-controls="collapseOne">
+                                            Décret-cadre sur la formation
+                                        </button>
+                                    </h5>
+                                </div>
+
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                     data-parent="#accordion">
+                                    <div class="card-body shadow">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                                        Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
+                                        you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-2 border-0">
+                                <div class="card-header" id="headingTwo"
+                                     style="background-color: #00AC8C;border-radius: unset">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed text-white text-decoration-none"
+                                                data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                                aria-controls="collapseTwo">
+                                            Frais de déplacement en formation
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+                                     data-parent="#accordion">
+                                    <div class="card-body shadow">
+                                        <div class="row">
+                                            <div class="col-md-2 text-center mt-2">
+                                                <button class="button-response">Décret</button>
+                                            </div>
+                                            <div class="col-md-2 text-center mt-2">
+                                                <button class="button-response">Arrêté</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card border-0">
+                                <div class="card-header" id="headingThree"
+                                     style="background-color: #FF6F4C;border-radius: unset">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed text-decoration-none text-white"
+                                                data-toggle="collapse" data-target="#collapseThree"
+                                                aria-expanded="false" aria-controls="collapseThree">
+                                            CPF
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                     data-parent="#accordion">
+                                    <div class="card-body shadow">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                                        Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
+                                        you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

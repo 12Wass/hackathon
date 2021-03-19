@@ -25,7 +25,7 @@ class ArticleController extends AbstractController
         $articles = $paginator->paginate(
             $articleRepository->findBy(['online' => true], ['id' => 'DESC']),
             $request->query->getInt('page', $page),
-            6
+            9
         );
         $articles->setTemplate('public/article/_pagination.html.twig');
 

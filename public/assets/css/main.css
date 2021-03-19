@@ -56,7 +56,7 @@ a,button {
 }
 
 button {
-    font-family: "MarianneRegular",sans-serif;
+    font-family: "MarianneRegular",sans-serif !important;
     font-size: 15px
 }
 
@@ -369,10 +369,6 @@ body.dark-mode header #mda_logo1 {
 
 body.dark-mode header #mda_logo2 {
     display: block
-}
-
-body.dark-mode header nav ul:last-child li:nth-child(3) {
-    background-color: #004494
 }
 
 body.dark-mode header .col-l2 a,body.dark-mode header nav ul li a {
@@ -952,15 +948,6 @@ header nav ul:last-child {
     justify-content: flex-end
 }
 
-header nav ul:last-child li:nth-child(3) {
-    color: #fff;
-    background-color: #1165e6;
-    border-radius: 3.33333px;
-    -webkit-border-radius: 3.33333px;
-    -ms-border-radius: 3.33333px;
-    -o-border-radius: 3.33333px
-}
-
 header nav ul li {
     list-style: none;
     padding: 5px 15px
@@ -981,12 +968,13 @@ header nav ul li:last-child {
     }
 
     .col-r li {
-        display: none
+        display: none !important;
     }
 
     .col-l1 img {
         width: 100%;
-        padding: 5%
+        paddin
+        g: 5%
     }
 
     .col-l2 a {
