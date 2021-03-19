@@ -1,3 +1,256 @@
 {% extends 'views/public/layout.html.twig' %}
 {% block body %}
+    <style>
+        .trait {
+            width: 20%;
+            height: 6px;
+            margin-bottom: 30px;
+            background-color: #000091;
+        }
+
+        .accordeon-title {
+            background-color: white;
+            border-right: unset;
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+        }
+
+        .accordeon-title > h5 > button {
+            color: #000091;
+        }
+    </style>
+    <main role="main">
+        <section style="padding-top: 10%;padding-bottom: 5%">
+            <div class="row">
+                <div class="container">
+                    <div class="col-md-12">
+                        <h1 class="sm" style="color: #000091">Dispositifs
+                            <br>de formation</h1>
+                        <div class="trait"></div>
+                        <span>Cliquez sur les blocs pour lire l'explication</span>
+                        <div id="accordion" class=" mt-5">
+                            <div class="card mb-2 border-0">
+                                <div class="card-header accordeon-title" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-decoration-none"
+                                                data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                                aria-controls="collapseOne">
+                                            Comment exprimer son besoin de formation ?
+                                        </button>
+                                    </h5>
+                                </div>
+
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                     data-parent="#accordion">
+                                    <div class="card-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                                        Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
+                                        you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-2 border-0">
+                                <div class="card-header accordeon-title" id="headingTwo">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed text-decoration-none"
+                                                data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                                aria-controls="collapseTwo">
+                                            Le compte personnel de formation
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                     data-parent="#accordion">
+                                    <div class="card-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                                        Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
+                                        you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-2 border-0">
+                                <div class="card-header accordeon-title" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed text-decoration-none"
+                                                data-toggle="collapse" data-target="#collapseThree"
+                                                aria-expanded="false" aria-controls="collapseThree">
+                                            La période de professionnalisation
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                     data-parent="#accordion">
+                                    <div class="card-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                                        Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
+                                        you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-2 border-0">
+                                <div class="card-header accordeon-title" id="heading4">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed text-decoration-none"
+                                                data-toggle="collapse" data-target="#collapse4"
+                                                aria-expanded="false" aria-controls="collapse4">
+                                            Le bilan de compétences
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse4" class="collapse" aria-labelledby="heading4"
+                                     data-parent="#accordion">
+                                    <div class="card-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                                        Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
+                                        you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-2 border-0">
+                                <div class="card-header accordeon-title" id="heading5">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed text-decoration-none"
+                                                data-toggle="collapse" data-target="#collapse5"
+                                                aria-expanded="false" aria-controls="collapse5">
+                                            La validation des acquis de l'expérience (VAE)
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse5" class="collapse" aria-labelledby="heading5"
+                                     data-parent="#accordion">
+                                    <div class="card-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                                        Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
+                                        you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-2 border-0">
+                                <div class="card-header accordeon-title" id="heading6">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed text-decoration-none"
+                                                data-toggle="collapse" data-target="#collapse6"
+                                                aria-expanded="false" aria-controls="collapse6">
+                                            Le congé de formation professionnelle
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse6" class="collapse show" aria-labelledby="heading6"
+                                     data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p> Les agents titulaires, civils contractuels et ouvriers de l'État qui
+                                            souhaitent compléter leur formation en vue de satisfaire des projets
+                                            professionnels ou personnels peuvent bénéficier d'un congé de formation
+                                            professionnelle (CFP). Il permet aux agents de parfaire leur formation par
+                                            le biais de stages de formation à caractère professionnel ou personnel qui
+                                            ne leur sont pas proposés par l'administration ou par des actions organisées
+                                            par l'administration en vue de la préparation aux concours administratifs.
+                                            La durée du CFP ne peut excéder trois années pour l'ensemble de la carrière
+                                            ; il peut être fractionné.
+                                        </p>
+                                        <p>Durant le congé de formation professionnelle, le fonctionnaire perçoit,
+                                            pendant une durée limitée à douze mois, une indemnité mensuelle forfaitaire
+                                            égale à 85 % du traitement brut et de l'indemnité de résidence afférents à
+                                            l'indice qu'il détenait au moment de sa mise en congé. L'agent qui bénéficie
+                                            d'un congé de formation s'engage à rester au service de l'administration
+                                            pendant une durée égale au triple de celle pendant laquelle il a perçu
+                                            l'indemnité.
+                                        </p>
+                                        <p>Les conditions pour y prétendre sont les suivantes :</p>
+                                        <ul>
+                                            <li>les agents titulaires doivent avoir accompli au moins l'équivalent de
+                                                trois années à temps plein de services effectifs dans l'administration,
+                                            </li>
+                                            <li>les agents civils contractuels doivent justifier de l'équivalent de
+                                                trente-six mois au moins de services effectifs à temps plein au titre de
+                                                contrats de droit public, dont douze mois au moins dans l'administration
+                                                à laquelle est demandé le congé de formation,
+                                            </li>
+                                            <li>les ouvriers de l'État doivent compter l'équivalent de trois années au
+                                                moins de services effectifs à temps plein en cette qualité.
+                                                L'administration accorde la demande, dans la limite des crédits
+                                                disponibles.
+                                            </li>
+                                        </ul>
+                                        <p class="font-weight-bold">Comment effectuer sa demande ?</p>
+                                        <p>La demande de congé de formation professionnelle doit être transmise par la
+                                            voie hiérarchique au moins cent-vingt jours avant la date de début de la
+                                            formation qui justifie ce congé.
+                                        </p>
+                                        <p>La demande doit porter mention de cette date et préciser la nature de
+                                            l'action de formation, sa durée, et le nom de l'organisme qui la dispense.
+                                            L'administration dispose alors de trente jours pour faire connaitre sa
+                                            décision d'agrément ou de rejet à l'agent demandeur. Si un refus est opposé
+                                            à la demande pour des motifs liés à des nécessités de service, la décision
+                                            est alors soumise à l'avis de la commission administrative paritaire.
+                                        </p>
+                                        <p>L'agent en formation au titre du congé de formation professionnelle est
+                                            soumis à une obligation d'assiduité. II doit, à la fin de chaque mois et au
+                                            moment de la reprise du travail, fournir une attestation de présence en
+                                            formation. Dans le cas des formations par correspondance, l'assiduité est
+                                            matérialisée par les relevés de notes de l'agent ; toute absence sans motif
+                                            valable entrainant la fin du congé et l'obligation pour l'agent de
+                                            rembourser les indemnités perçues.
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-2 border-0">
+                                <div class="card-header accordeon-title" id="heading7">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed text-decoration-none"
+                                                data-toggle="collapse" data-target="#collapse7"
+                                                aria-expanded="false" aria-controls="collapse7">
+                                            Les actions de préparation aux examens et concours administratifs et aux
+                                            autres procédures de sélection
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse7" class="collapse" aria-labelledby="heading7"
+                                     data-parent="#accordion">
+                                    <div class="card-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                                        Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
+                                        you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+    </main>
 {% endblock %}

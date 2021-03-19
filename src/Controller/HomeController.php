@@ -34,4 +34,12 @@ class HomeController extends AbstractController
     {
         return $this->render('public/pages/ressourcesReglementaires.html.twig');
     }
+
+    /**
+     * @Route("/dispositifs-de-formation", name="dispositif_formation")
+     */
+    public function dispositifFormation(): Response
+    {
+        return $this->render('public/pages/dispositifFormation.html.twig');
+    }
 }
