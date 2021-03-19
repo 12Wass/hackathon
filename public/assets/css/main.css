@@ -246,13 +246,13 @@ h4 {
 
 @font-face {
     font-family: MarianneRegular;
-    src: url("/assets/fonts/Marianne-Regular.ttf"),url("/assets/fonts/Marianne-Regular.otf"),url(/assets/fonts/Marianne-Regular.ttf);
+    src: url("/public/assets/fonts/Marianne-Regular.ttf"),url("/public/assets/fonts/Marianne-Regular.otf"),url(/public/assets/fonts/Marianne-Regular.ttf);
     font-weight: 400
 }
 
 @font-face {
     font-family: MarianneBold;
-    src: url("/assets/fonts/Marianne-Bold.ttf"),url("/assets/fonts/Marianne-Bold.woff2"),url(/assets/fonts/Marianne-Bold.ttf);
+    src: url("/public/assets/fonts/Marianne-Bold.ttf"),url("/public/assets/fonts/Marianne-Bold.woff2"),url(/public/assets/fonts/Marianne-Bold.ttf);
     font-weight: 700
 }
 
@@ -976,8 +976,7 @@ header nav ul li:last-child {
 
     .col-l1 img {
         width: 100%;
-        paddin
-        g: 5%
+        padding: 5%
     }
 
     .col-l2 a {
@@ -994,13 +993,7 @@ header nav ul li:last-child {
     }
 }
 
-#footer {
-    padding: 5vh 0;
-    background-color: #fff;
-    z-index: 99;
-    position: relative;
-    box-shadow: 0 .4rem 1rem rgba(0,0,0,.15)!important;
-}
+
 
 #footer div .col-4 {
     width: 25%;
@@ -2164,3 +2157,19 @@ body.dyslexique-mode #rejoindre div article h3,body.dyslexique-mode a,body.dysle
     -o-border-radius: 100px
 }
 
+#card-image{
+    display: flex;
+    float: right;
+    margin-top: 15%;
+    margin-left: 70%;
+    position:absolute;
+}
+
+.regions {
+    padding-bottom: 50%;
+    padding-top: 2%;
+}
+
+.image_banner{
+    width: 100%;
+}
