@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Pages;
+use App\Entity\Annuaire;
 use App\Form\AdminPagesEditType;
 use App\Form\AdminPagesNewType;
 use App\Repository\PagesRepository;
@@ -12,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
+use Symfony\Component\Asset\Packages;
 /**
  * @Route("/admin/pages")
  * @IsGranted("ROLE_SUPER_ADMIN")
@@ -84,7 +85,6 @@ class AdminPageController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/{id}/delete", name="page_delete", methods={"GET"})
      * @param Pages $page
@@ -100,17 +100,20 @@ class AdminPageController extends AbstractController
     }
 
     /**
-     * @Route("/test", name="page_test", methods={"GET","POST"})
+     * @Route("/test/{name}", name="page_test", methods={"GET","POST"})
      * @param Request $request
      * @param PagesRepository $pagesRepository
+     * @param $name
+     * @param Packages $assetsManager
      * @return Response
      */
-    public function test(Request $request, PagesRepository $pagesRepository): Response
+    public function test(Request $request, PagesRepository $pagesRepository, $name, Packages $assetsManager): Response
     {
-
-        $page = $pagesRepository->findOneBy(['id' => 9]);
+        $logo = $assetsManager->getUrl('/public/assets/pages/images/Logo_ministere.svg');
+        $page = $pagesRepository->findOneBy(['name' => $name]);
         return $this->render('admin/pages/article.html.twig', [
             'page' => $page,
+            'logo_link' => $logo
         ]);
     }
 

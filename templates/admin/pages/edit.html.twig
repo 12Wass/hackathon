@@ -14,8 +14,8 @@
                         <div class="form-row">
                             <div class="col-sm-6 mb-3">
                                 <label>Nom</label>
-                                {{ form_widget(form.name) }}
-                                {{ form_errors(form.name) }}
+                                <input type="text" disabled class="form-control"
+                                       value="{{ page.name }}">
                             </div>
                             <div class="col-sm-6 mb-3">
                                 <label>Titre</label>

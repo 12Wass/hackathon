@@ -61,6 +61,49 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-main-item {% if (route_name == 'annuaire_list') or (route_name == 'annuaire_new') or (route_name == 'annuaire_edit') %}open{% endif %}">
+                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
+                        <i class="nav-main-link-icon fa fa-users"></i>
+                        <span class="nav-main-link-name">Annuaire</span>
+                    </a>
+                    <ul class="nav-main-submenu">
+                        <li class="nav-main-item">
+                            <a class="nav-main-link {% if route_name == 'annuaire_list' %}active{% endif %}" href="{{ path('annuaire_list') }}">
+                                <span class="nav-main-link-name">Lister les formateurs</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link {% if route_name == 'annuaire_new' %}active{% endif %}" href="{{ path('annuaire_new') }}">
+                                <span class="nav-main-link-name">Ajouter un formateur</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link {% if route_name == 'annuaire_region_list' %}active{% endif %}" href="{{ path('annuaire_region_list') }}">
+                                <span class="nav-main-link-name">Lister les régions</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link {% if route_name == 'annuaire_region_new' %}active{% endif %}" href="{{ path('annuaire_region_new') }}">
+                                <span class="nav-main-link-name">Ajouter une région</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-main-item {% if (route_name == 'chatbot_view') %}open{% endif %}">
+                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
+                        <i class="nav-main-link-icon fa fa-users"></i>
+                        <span class="nav-main-link-name">Chatbot</span>
+                    </a>
+                    <ul class="nav-main-submenu">
+                        <li class="nav-main-item">
+                            <a class="nav-main-link {% if route_name == 'chatbot_view' %}active{% endif %}" href="{{ path('chatbot_view') }}">
+                                <span class="nav-main-link-name">Gérer</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

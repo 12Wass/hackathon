@@ -9,31 +9,25 @@
     <div class="content">
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Liste des pages</h3>
+                <h3 class="block-title">Liste des régions</h3>
             </div>
             <div class="block-content block-content-full">
                 <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
                     <thead>
                     <tr>
                         <th>Nom</th>
-                        <th>Titre</th>
-                        <th>Type</th>
-                        <th>Créée le</th>
-                        <th>Mise à jour le</th>
+                        <th>Créé le</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for page in pages %}
-                        <tr id="user{{ page.id }}">
-                            <td>{{ page.name }}</td>
-                            <td>{{ page.title }}</td>
-                            <td>{{ page.type }}</td>
-                            <td>{{ page.createdAt|date('Y-m-d H:i:s') }}</td>
-                            <td>{{ page.updatedAt ? page.updatedAt|date('Y-m-d H:i:s') : 'Jamais' }}</td>
+                    {% for region in regions %}
+                        <tr id="user{{ region.id }}">
+                            <td>{{ region.name }}</td>
+                            <td>{{ region.createdAt|date('Y-m-d H:i:s') }}</td>
                             <td>
-                                <a data-toggle="tooltip" data-placement="top" title="Editer" class="btn btn-small btn-warning" href="{{ path('page_edit', {'id': page.id}) }}"><i class="fa fa-pen"></i></a>
-                                <a data-toggle="tooltip" data-placement="top" title="Supprimer" class="btn btn-small btn-danger" href="{{ path('page_delete', {'id': page.id}) }}"><i class="fa fa-trash"></i></a>
+                                <a data-toggle="tooltip" data-placement="top" title="Editer" class="btn btn-small btn-warning" href="{{ path('annuaire_region_edit', {'id': region.id}) }}"><i class="fa fa-pen"></i></a>
+                                <a data-toggle="tooltip" data-placement="top" title="Supprimer" class="btn btn-small btn-danger" href="{{ path('annuaire_region_delete', {'id': region.id}) }}"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     {% endfor %}

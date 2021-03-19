@@ -20,13 +20,6 @@ class AdminPagesEditType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, [
-                'attr' => [
-                    'class' => 'form-control',
-                    'placeholder' => 'Nom',
-                    'disabled' => true
-                ]
-            ])
             ->add('title', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
