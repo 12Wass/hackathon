@@ -26,4 +26,12 @@ class HomeController extends AbstractController
     {
         return $this->render('public/pages/devenirFormateur.html.twig');
     }
+
+    /**
+     * @Route("/ressources-reglementaires", name="ressources_reglementaires")
+     */
+    public function ressourcesReglementaires(): Response
+    {
+        return $this->render('public/pages/ressourcesReglementaires.html.twig');
+    }
 }
