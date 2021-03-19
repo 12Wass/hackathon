@@ -1,0 +1,82 @@
+{% extends 'views/public/layout.html.twig' %}
+{% block body %}
+    <style>
+        .bgimg-1 {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .bgimg-1 {
+            background-image: url("{{ asset('assets/images/articles/imgbanniere.png') }}");
+            height: 600px;
+            width: 75%;
+        }
+
+        .trait {
+            width: 20%;
+            height: 11px;
+            margin-bottom: 60px;
+            background-color: #000091;
+            margin-left: 15%;
+        }
+
+        .trait-light {
+            width: 26%;
+            height: 6px;
+            margin-bottom: 10px;
+            background-color: #000091;
+        }
+
+        .caption {
+            position: absolute;
+            right: 10%;
+            top: 30%;
+            width: 530px;
+            color: #000;
+            background: white;
+            padding: 20px;
+            border-top: solid red 10px;
+        }
+
+        .button-custom {
+            border: 2px solid #000091;
+            padding: 5px 22px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            color: #fff;
+            background-color: #000091;
+            float: right;
+            font-family: "MarianneRegular",sans-serif;
+        }
+
+
+    </style>
+    <main role="main">
+        <section style="padding-top: 5%;padding-bottom: 5%">
+            <div class="bgimg-1 mb-5">
+                <div class="caption shadow">
+                    <span style="font-size: 48px;color: #000091;font-weight: bold;">Annuaire</span>
+                    <div class="trait-light"></div>
+                    <p>Vous trouverez sur cette page l'annuaire des formateurs par villes, sélectionnez la zone où vous souhaitez trouver un formateur. Sinon, cliquez ci-dessous pour voir tous les formateurs</p>
+                    <button class="button-custom"> Voir tous les formateurs</button>
+                </div>
+            </div>
+            <div class="container">
+                <img src="{{ asset('assets/images/articles/logos_ministere.png') }}" class="mb-4 ml-0" alt="">
+            </div>
+            <div class="trait"></div>
+            <div class="container">
+                <div class="row">
+                    {% for formateur in formateurs %}
+                        {% include 'public/annuaire/_formateurBlock.html.twig' %}
+                    {% endfor %}
+
+                    {{ knp_pagination_render(formateurs) }}
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}
