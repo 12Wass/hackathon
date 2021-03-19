@@ -50,8 +50,9 @@
             float: right;
             font-family: "MarianneRegular",sans-serif;
         }
-    </style>
 
+
+    </style>
     <main role="main">
         <section style="padding-top: 5%;padding-bottom: 5%">
             <div class="bgimg-1 mb-5">
@@ -59,21 +60,20 @@
                     <span style="font-size: 48px;color: #000091;font-weight: bold;">Annuaire</span>
                     <div class="trait-light"></div>
                     <p>Vous trouverez sur cette page l'annuaire des formateurs par villes, sélectionnez la zone où vous souhaitez trouver un formateur. Sinon, cliquez ci-dessous pour voir tous les formateurs</p>
-                    <button class="button-custom"><a href="{{ path('list_formateurs_region', {'region': 'all'}) }}">Voir tous les formateurs</a></button>
+                    <button class="button-custom"> Voir tous les formateurs</button>
                 </div>
             </div>
             <div class="container">
                 <img src="{{ asset('assets/images/articles/logos_ministere.png') }}" class="mb-4 ml-0" alt="">
             </div>
             <div class="trait"></div>
-            <div class="container col-md-10 regions">
-                <div class="col-md-6">
-                    {% for region in regions %}
-                        <button type="button" class="btn btn-outline-secondary btn-lg"><a href="{{ path('list_formateurs_region', {'region': region.id}) }}">{{ region.name }}</a></button>
+            <div class="container">
+                <div class="row">
+                    {% for formateur in formateurs %}
+                        {% include 'public/annuaire/_formateurBlock.html.twig' %}
                     {% endfor %}
-                </div>
-                <div class="col-md-6" style="display: flex; float: right;">
-                        <img src="{{ asset('assets/images/annuaire/Carte_France.png') }}" alt="">
+
+                    {{ knp_pagination_render(formateurs) }}
                 </div>
             </div>
         </section>
