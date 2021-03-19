@@ -1,0 +1,12 @@
+<div class="container">
+    <h6 class="last-articles text-left mb-3" style="color: #000091;font-size: 35px">Nos derniers articles</h6>
+    <div class="trait"></div>
+    <div class="row">
+        {% for article in articles %}
+            {% include 'public/article/_articleBlock.html.twig' %}
+        {% endfor %}
+    </div>
+
+</div>
+
+

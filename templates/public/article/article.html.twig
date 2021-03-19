@@ -1,0 +1,53 @@
+{% extends 'views/public/layout.html.twig' %}
+{% block body %}
+    <style>
+        .bgimg-1 {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .bgimg-1 {
+            background-image: url("{{ vich_uploader_asset(article, 'couvertureFile') }}");
+            height: 50%;
+        }
+        .blockArticle {
+            margin-top: -8%;
+            padding: 3%;
+            background: #fff;
+            margin-bottom: 3rem!important;
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+        }
+        .title {
+            color: #000091;
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        .article-date {
+            font-style: italic;
+            color: grey;
+            font-size: 12px;
+        }
+
+        .trait {
+            width: 15%;
+            height: 6px;
+            margin-bottom: 60px;
+            background-color: #000091;
+        }
+    </style>
+    <main role="main">
+        <section style="padding-top: 6%;padding-bottom: 5%">
+            <div class="bgimg-1"></div>
+            <div class="container blockArticle">
+                <h1 class="title">{{ article.title }}</h1>
+                <div>
+                    {{ article.content|raw }}
+                </div>
+                <p class="article-date">Publié le {{ article.createdAt|date('d/m/Y') }}</p>
+            </div>
+            {{ render(controller('App\\Controller\\ArticleController::lastArticles')) }}
+        </section>
+    </main>
+
+{% endblock %}

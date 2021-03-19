@@ -9,31 +9,42 @@
     <div class="content">
         <div class="block block-rounded">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Liste des pages</h3>
+                <h3 class="block-title">Liste des categories</h3>
+                <div class="block-options">
+                    <a href="{{ path('category_new') }}">
+                        <button class="btn btn-sm btn-outline-success">
+                            <i class="fa fa-plus"></i> Nouveau
+                        </button>
+                    </a>
+                </div>
             </div>
             <div class="block-content block-content-full">
                 <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
                     <thead>
                     <tr>
                         <th>Nom</th>
-                        <th>Titre</th>
-                        <th>Type</th>
-                        <th>Créée le</th>
-                        <th>Mise à jour le</th>
-                        <th>Actions</th>
+                        <th>Nombre d'articles</th>
+                        <th>Créer</th>
+                        <th>Dernière modification</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for page in pages %}
-                        <tr id="user{{ page.id }}">
-                            <td>{{ page.name }}</td>
-                            <td>{{ page.title }}</td>
-                            <td>{{ page.type }}</td>
-                            <td>{{ page.createdAt|date('Y-m-d H:i:s') }}</td>
-                            <td>{{ page.updatedAt ? page.updatedAt|date('Y-m-d H:i:s') : 'Jamais' }}</td>
+                    {% for category in categories %}
+                        <tr>
+                            <td>{{ category.name }}</td>
+                            <td>{{ category.articles|length }}</td>
+                            <td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ category.updatedAt ? category.updatedAt|date('Y-m-d H:i:s') : 'Aucune' }}</td>
                             <td>
-                                <a data-toggle="tooltip" data-placement="top" title="Editer" class="btn btn-small btn-warning" href="{{ path('page_edit', {'id': page.id}) }}"><i class="fa fa-pen"></i></a>
-                                <a data-toggle="tooltip" data-placement="top" title="Supprimer" class="btn btn-small btn-danger" href="{{ path('page_delete', {'id': page.id}) }}"><i class="fa fa-trash"></i></a>
+                                <a data-toggle="tooltip" data-placement="top" title="Editer"
+                                   class="btn btn-small btn-warning"
+                                   href="{{ path('category_edit', {'id': category.id}) }}"><i
+                                            class="fa fa-pen"></i></a>
+                                <a data-toggle="tooltip" data-placement="top" title="Supprimer"
+                                   class="btn btn-small btn-danger"
+                                   href="{{ path('category_delete', {'id': category.id}) }}"><i
+                                            class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     {% endfor %}
@@ -55,5 +66,4 @@
     <script src="{{ asset('admin/js/plugins/datatables/buttons/buttons.flash.min.js') }}"></script>
     <script src="{{ asset('admin/js/plugins/datatables/buttons/buttons.colVis.min.js') }}"></script>
     <script src="{{ asset('admin/js/pages/datatables.js') }}"></script>
-
 {% endblock %}
