@@ -1,0 +1,202 @@
+{% extends 'views/public/layout.html.twig' %}
+
+{% block body %}
+    <style>
+        #chatbot .dominiqueimg {
+            max-width: 150px;
+        }
+
+        #chatbot .dominiqueimgmin {
+            width: 40px;
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        section #chatbot {
+            background-color: #000691;
+            padding-top: 9%;
+            padding-bottom: 10%;
+        }
+
+        #box {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 15px;
+            height: auto;
+            max-height: 53vh;
+            overflow-y: scroll;
+        }
+
+        .answer {
+            line-height: 20px;
+            padding: 10px;
+        }
+
+        .response {
+            text-align: right;
+            line-height: 20px;
+            padding: 15px 0px 15px 15px;
+        }
+
+        .chat-text {
+            border-radius: 25px;
+            padding: 15px;
+            display: inline-flex;
+        }
+
+        .answer .chat-text {
+            background: #E5E5E5;
+        }
+
+        .response .chat-text {
+            background: #000691;
+            color: white;
+        }
+
+        .chat-text > p {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            flex-direction: column;
+        }
+
+        #chatbot #baseline {
+            margin-top: 40px;
+            font-size: 16px;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.3;
+            letter-spacing: normal;
+            text-align: center;
+            color: #fff;
+        }
+
+        .button-finish {
+            background-color: #000091;
+            color: #fff;
+            padding: 10px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 25px;
+        }
+
+        .button-response {
+            background-color: #fff;
+            border: 2px solid #000091;
+            color: #000091;
+            padding: 10px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 25px;
+            min-width: 100%;
+        }
+
+        .button-response:hover {
+            background-color: #000091;
+            color: #fff;
+        }
+    </style>
+
+    <main role="main">
+        <section id="chatbot">
+            <div class="container mt-10">
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <img class="dominiqueimg" src="{{ asset('assets/images/chatbot/biglogo_dom-01.svg') }}" alt="">
+                        <p id="baseline">Notre chatbot Dominique va vous aider à déterminer vos besoins et vous guider
+                            dans votre <br>
+                            parcours de formation et de carrière. Réponsez à ses questions et laissez-vous guider !</p>
+                    </div>
+                    <div class="col-md-9" id="box">
+                        <div class="row" id="chat">
+                        </div>
+                        <br><br>
+                        <div class="row" id="answers">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        var chatBotMessage = $("#chat");
+        var answers = $("#answers");
+        $(function () {
+            var addAnswerAndQuestion = function (response) {
+                if (response.data.length > 0) {
+                    response.data.forEach(item => {
+                        chatBotMessage.append(
+                            '<div class="col-sm-12 answer">' +
+                            '<div class="chat-text">' +
+                            '<img class="dominiqueimgmin" src="{{ asset('assets/images/chatbot/ptitlogo_dom-01.svg') }}" alt="">' +
+                            '<p class="mb-0">' + item.text + '</p>' +
+                            '</div>' +
+                            '</div>'
+                        );
+                        let html = ''
+                        if (item.answers !== undefined) {
+                            item.answers.forEach(answer => {
+                                html += '<div class="col-md-6 text-center mt-2">' +
+                                    '<button class="button-response" data-id="' + answer.id + '">' + answer.text + '</button>' +
+                                    '</div>'
+                            })
+                            answers.html(html)
+                            $(".button-response").on("click", answerQuestion);
+                        } else {
+                            answers.html('<div class="col-md-12 text-center">' +
+                                '<button class="button-finish" disabled>Vous êtes arrivés au bout du questionnaire !</button>' +
+                                '</div>')
+                        }
+                    })
+                } else {
+                    answers.html('<div class="col-md-12 text-center">' +
+                        '<button class="button-finish" disabled>Vous êtes arrivés au bout du questionnaire !</button>' +
+                        '</div>')
+                }
+                $("#box").animate({ scrollTop: $('#box').prop("scrollHeight")}, 1000);
+            }
+
+            var addResponse = function (text) {
+                chatBotMessage.append(
+                    '<div class="col-sm-12 response">' +
+                    '<div class="chat-text">' +
+                    '<p class="mb-0">' + text + '</p>' +
+                    '</div>' +
+                    '</div>'
+                );
+            }
+
+            var answerQuestion = function () {
+                var id = $(this).data('id');
+                var text = $(this).text();
+                $.ajax({
+                    url: 'chatbot/' + id,
+                    type: 'GET',
+                    success: function (response) {
+                        if (response.type === "success") {
+                            addResponse(text)
+                            addAnswerAndQuestion(response)
+                        }
+                    }
+                });
+            };
+
+            $.ajax({
+                url: '{{ path('chatbot_get_first_answer') }}',
+                type: 'GET',
+                success: function (response) {
+                    if (response.type === "success") {
+                        addAnswerAndQuestion(response)
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock %}
