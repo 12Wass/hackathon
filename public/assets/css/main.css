@@ -1039,11 +1039,6 @@ header nav ul li:last-child {
     margin: initial
 }
 
-#footer div section .rs_svg {
-    width: 70%;
-    float: left
-}
-
 #footer div section .rs_svg img {
     width: auto;
     height: 20px;
