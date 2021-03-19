@@ -7,6 +7,7 @@ use App\Entity\Pages;
 use App\Entity\Annuaire;
 use App\Form\AdminAnnuaireEditType;
 use App\Form\AdminAnnuaireNewType;
+use App\Form\AdminAnnuaireRegionEditType;
 use App\Form\AdminAnnuaireRegionNewType;
 use App\Repository\AnnuaireRegionsRepository;
 use App\Repository\AnnuaireRepository;
@@ -17,6 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Asset\Packages;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 /**
  * @Route("/admin/annuaire")
  * @IsGranted("ROLE_SUPER_ADMIN")
@@ -52,7 +54,7 @@ class AdminAnnuaireController extends AbstractController
                 $annuaire->setCreatedAt(new \DateTime());
                 $this->getDoctrine()->getManager()->persist($annuaire);
                 $this->getDoctrine()->getManager()->flush();
-                $this->addFlash('success', 'Page créée');
+                $this->addFlash('success', 'Formateur créer');
                 return $this->redirectToRoute('annuaire_list');
             }
             $this->addFlash('error', 'Veuillez saisir un nom, prénom et une fonction');
@@ -77,8 +79,8 @@ class AdminAnnuaireController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success', 'Page modifiée');
-            return $this->redirectToRoute('page_list');
+            $this->addFlash('success', 'Formateur modifié');
+            return $this->redirectToRoute('annuaire_list');
         }
 
         return $this->render('admin/annuaire/edit.html.twig', [
@@ -161,22 +163,22 @@ class AdminAnnuaireController extends AbstractController
     /**
      * @Route("/region/{id}/edit", name="annuaire_region_edit", methods={"GET","POST"})
      * @param Request $request
-     * @param Annuaire $annuaire
+     * @param AnnuaireRegions $annuaireRegions
      * @return Response
      */
-    public function edit_region(Request $request, Annuaire $annuaire): Response
+    public function edit_region(Request $request, AnnuaireRegions $annuaireRegions): Response
     {
-        $form = $this->createForm(AdminAnnuaireEditType::class, $annuaire);
+        $form = $this->createForm(AdminAnnuaireRegionEditType::class, $annuaireRegions);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success', 'Page modifiée');
-            return $this->redirectToRoute('page_list');
+            $this->addFlash('success', 'Région modifiée');
+            return $this->redirectToRoute('annuaire_region_list');
         }
 
-        return $this->render('admin/annuaire/edit.html.twig', [
-            'trainer' => $annuaire,
+        return $this->render('admin/annuaire_region/edit.html.twig', [
+            'region' => $annuaireRegions,
             'form' => $form->createView(),
         ]);
     }
